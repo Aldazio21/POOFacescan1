@@ -72,15 +72,15 @@ El sistema verifica la secuencia de acciones antes de continuar con el proceso d
 
 | Tecnología | Función |
 |---|---|
-| Java : Lenguaje de programación |
-| Android Studio: Entorno de desarrollo |
-| Android SDK: Desarrollo de la aplicación Android |
-| CameraX: Captura de imágenes mediante la cámara |
-| MediaPipe: Detección y análisis facial |
-| TensorFlow Lite: Ejecución del modelo de reconocimiento |
-| MobileFaceNe: Extracción de características faciales |
-| Git: Control de versiones |
-| GitHub: Alojamiento del repositorio |
+| Java | Lenguaje de programación |
+| Android Studio | Entorno de desarrollo |
+| Android SDK | Desarrollo de la aplicación Android |
+| CameraX | Captura de imágenes mediante la cámara |
+| MediaPipe | Detección y análisis facial |
+| TensorFlow Lite | Ejecución del modelo de reconocimiento |
+| MobileFaceNe | Extracción de características faciales |
+| Git | Control de versiones |
+| GitHub | Alojamiento del repositorio |
 
 5. Arquitectura general
 
