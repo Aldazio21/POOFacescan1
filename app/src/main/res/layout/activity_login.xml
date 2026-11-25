@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="#101820" android:fillViewport="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:gravity="center" android:padding="28dp">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="POOFacescan1" android:textColor="#FFFFFF" android:textSize="28sp"
+            android:textStyle="bold" android:gravity="center" android:padding="20dp" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Acceso local" android:textColor="#B0BEC5" android:textSize="17sp"
+            android:gravity="center" android:paddingBottom="20dp" />
+        <EditText android:id="@+id/usernameInput" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="Nombre de usuario"
+            android:singleLine="true" android:inputType="text" android:textColor="#FFFFFF"
+            android:textColorHint="#B0BEC5" android:backgroundTint="#80CBC4" />
+        <EditText android:id="@+id/passwordInput" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:hint="Contraseña"
+            android:singleLine="true" android:inputType="textPassword" android:textColor="#FFFFFF"
+            android:textColorHint="#B0BEC5" android:backgroundTint="#80CBC4"
+            android:layout_marginTop="12dp" />
+        <Button android:id="@+id/loginButton" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Iniciar sesión"
+            android:layout_marginTop="24dp" />
+        <Button android:id="@+id/registerButton" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:text="Crear cuenta / Registrarse"
+            android:layout_marginTop="10dp" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Cada cuenta tendrá su propio registro facial cifrado en este dispositivo."
+            android:textColor="#B0BEC5" android:textSize="13sp" android:gravity="center"
+            android:layout_marginTop="24dp" />
+    </LinearLayout>
+</ScrollView>

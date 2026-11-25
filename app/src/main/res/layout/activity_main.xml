@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="12dp"
+    android:background="#101820">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="POOFacescan1"
+        android:textColor="#FFFFFF"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:padding="8dp" />
+
+    <androidx.camera.view.PreviewView
+        android:id="@+id/viewFinder"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <TextView
+        android:id="@+id/statusText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Rostro inválido"
+        android:textColor="#FFFFFF"
+        android:background="#C62828"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:gravity="center"
+        android:padding="12dp"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/detectionThresholdText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Umbral de detección (MediaPipe): 50%"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:padding="5dp" />
+
+    <TextView
+        android:id="@+id/similarityText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Umbral de similitud: 80% | Similitud actual: --"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:padding="5dp" />
+
+    <TextView
+        android:id="@+id/detectionTimeText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tiempo hasta detectar: Sin búsqueda iniciada"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:gravity="center"
+        android:padding="5dp" />
+
+    <TextView
+        android:id="@+id/instructionText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Selecciona una opción"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:background="@android:color/transparent"
+        android:gravity="center"
+        android:padding="12dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="La prueba de presencia es básica y no garantiza detectar vídeos, pantallas o máscaras."
+        android:textColor="#FFCC80"
+        android:textSize="11sp"
+        android:gravity="center"
+        android:padding="4dp" />
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Registro" />
+
+    <Button
+        android:id="@+id/verifyButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Verificar" />
+
+    <Button
+        android:id="@+id/deleteButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Borrar" />
+
+    <Button
+        android:id="@+id/logoutButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cerrar sesión" />
+</LinearLayout>
