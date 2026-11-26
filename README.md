@@ -1,6 +1,6 @@
 # POOFacescan1
 
-1. Descripción del proyecto
+## 1. Descripción del proyecto
 
 POOFacescan1 es una aplicación móvil desarrollada para Android que implementa un sistema de autenticación mediante reconocimiento facial.
 
@@ -8,7 +8,7 @@ El proyecto utiliza técnicas de procesamiento de imágenes y extracción de car
 
 Su propósito es explorar la aplicación de tecnologías de reconocimiento facial en un sistema de autenticación móvil, considerando aspectos de seguridad, privacidad y experiencia de usuario.
 
-2. Objetivos
+## 2. Objetivos
 
 ### Objetivo general
 
@@ -24,7 +24,7 @@ Desarrollar una aplicación Android que permita autenticar usuarios mediante rec
 6. Proteger la información de autenticación y los datos biométricos.
 7. Evaluar el funcionamiento de la aplicación mediante pruebas.
 
-3. Funcionalidades principales
+## 3. Funcionalidades principales
 
 ### 3.1. Autenticación local
 
@@ -70,7 +70,7 @@ El sistema verifica la secuencia de acciones antes de continuar con el proceso d
 - Registro del consentimiento informado.
 - Posibilidad de eliminar las referencias del registro facial.
 
-4. Tecnologías utilizadas
+## 4. Tecnologías utilizadas
 
 | Tecnología | Función |
 |---|---|
@@ -86,7 +86,7 @@ El sistema verifica la secuencia de acciones antes de continuar con el proceso d
 | Git | Control de versiones |
 | GitHub | Alojamiento del repositorio |
 
-5. Arquitectura general
+## 5. Arquitectura general
 
 El funcionamiento de la aplicación se organiza en las siguientes etapas:
 
@@ -99,7 +99,7 @@ El funcionamiento de la aplicación se organiza en las siguientes etapas:
 7. **Verificación:** se comparan las características faciales con las referencias registradas.
 8. **Resultado:** la aplicación determina si la verificación cumple los criterios configurados.
 
-6. Requisitos para ejecutar el proyecto
+## 6. Requisitos para ejecutar el proyecto
 
 - Android Studio.
 - Git.
@@ -109,7 +109,7 @@ El funcionamiento de la aplicación se organiza en las siguientes etapas:
 - Archivos de modelos necesarios para el funcionamiento del reconocimiento facial.
 - Conexión a internet durante la descarga inicial de dependencias de Gradle.
 
-7. Instalación
+## 7. Instalación y ejecución desde el código fuente
 
 ### Clonar el repositorio
 
@@ -124,9 +124,51 @@ git clone https://github.com/Aldazio21/POOFacescan1.git
 3. Elegir la carpeta descargada de POOFacescan1.
 4. Esperar la sincronización de Gradle.
 5. Conectar un dispositivo Android compatible o iniciar un emulador.
-6. Ejecutar la aplicación.
+6. Ejecutar la aplicación desde Android Studio.
 
-8. Parámetros de verificación
+## 8. Descargar e instalar el APK desde GitHub Actions
+
+El repositorio genera un APK de depuración mediante GitHub Actions. El archivo se publica como un artefacto del flujo de compilación con el nombre **POOFacescan1-debug-apk**.
+
+### Pasos para descargarlo
+
+1. Ingresar al repositorio: [POOFacescan1](https://github.com/Aldazio21/POOFacescan1).
+2. Abrir la pestaña **Actions**.
+3. En la lista de flujos de trabajo, seleccionar **Build Android APK**.
+4. Abrir la ejecución más reciente que tenga el estado **Success** (marca verde).
+5. Desplazarse hasta la sección **Artifacts** al final de la página.
+6. Seleccionar **POOFacescan1-debug-apk** para descargar el archivo ZIP.
+7. Una vez descargado, extraer el contenido del ZIP. Dentro se encuentra el archivo APK generado.
+8. Transferir el APK al dispositivo Android si la descarga se realizó desde un computador.
+9. Abrir el archivo APK desde el dispositivo y seguir las indicaciones de instalación de Android.
+
+### Si Android bloquea la instalación
+
+Al tratarse de un APK descargado fuera de Google Play, Android puede solicitar autorización para instalar aplicaciones desde esa fuente. Si aparece ese aviso, revisar los ajustes del dispositivo y permitir la instalación para la aplicación desde la que se está abriendo el APK (por ejemplo, el navegador o el administrador de archivos). Esta autorización puede desactivarse nuevamente después de la instalación.
+
+### Consideraciones importantes
+
+- El artefacto disponible corresponde a una compilación **debug**; no es una versión de lanzamiento firmada para distribución en Google Play.
+- GitHub Actions conserva el artefacto durante un periodo limitado (14 días según la configuración actual del flujo). Si ya no aparece en la sección **Artifacts**, será necesario ejecutar nuevamente el flujo de compilación.
+- Para descargar el artefacto desde un repositorio privado, es necesario iniciar sesión en GitHub y contar con permisos de acceso al repositorio.
+- La descarga del APK no instala automáticamente la aplicación. Es necesario extraer el ZIP y abrir el APK en el dispositivo Android.
+- Se recomienda descargar el artefacto únicamente desde una ejecución exitosa del flujo oficial del repositorio.
+
+### Generar el APK localmente (opcional)
+
+También es posible compilar la aplicación desde Android Studio o desde la terminal, en la carpeta raíz del proyecto, usando:
+
+```powershell
+.\\gradlew.bat assembleDebug
+```
+
+Si la compilación finaliza correctamente, el APK de depuración se genera normalmente en:
+
+```text
+app/build/outputs/apk/debug/
+```
+
+## 9. Parámetros de verificación
 
 La implementación utiliza los siguientes parámetros configurados:
 
@@ -139,7 +181,7 @@ La implementación utiliza los siguientes parámetros configurados:
 
 Estos valores corresponden a la configuración implementada y no representan por sí solos una medición experimental de precisión.
 
-9. Pruebas del sistema
+## 10. Pruebas del sistema
 
 El proyecto cuenta con un protocolo de pruebas que contempla:
 
@@ -171,8 +213,8 @@ Se ejecutaron pruebas instrumentadas en un dispositivo Android 16, obteniendo lo
 
 Para ejecutar las pruebas instrumentadas desde la terminal de Android Studio:
 
-```bash
-.\gradlew.bat connectedDebugAndroidTest
+```powershell
+.\\gradlew.bat connectedDebugAndroidTest
 ```
 
 El informe generado por Gradle puede consultarse en:
@@ -183,7 +225,7 @@ app/build/reports/androidTests/connected/debug/index.html
 
 Estos resultados validan los casos cubiertos por las pruebas automatizadas, pero no representan una evaluación experimental completa de la precisión del reconocimiento facial.
 
-10. Seguridad y limitaciones
+## 11. Seguridad y limitaciones
 
 La aplicación incorpora mecanismos de protección de credenciales, aislamiento de información por cuenta y almacenamiento cifrado de referencias biométricas.
 
@@ -195,7 +237,7 @@ Las 16 pruebas instrumentadas aprobadas validan los comportamientos cubiertos po
 
 Los datos biométricos deben tratarse con consentimiento informado y mantenerse protegidos.
 
-11. Control de versiones
+## 12. Control de versiones
 
 El proyecto utiliza Git para el control de versiones y GitHub como plataforma de alojamiento del código fuente.
 
@@ -203,7 +245,7 @@ El proyecto utiliza Git para el control de versiones y GitHub como plataforma de
 
 **Rama principal:** `main`
 
-12. Autor
+## 13. Autor
 
 Desarrollador: Aldazio21
 
