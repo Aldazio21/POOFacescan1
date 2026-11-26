@@ -1,4 +1,4 @@
-# POOFacescan1 – Sistema de autenticación facial
+# POOFacescan1
 
 1. Descripción del proyecto
 
@@ -10,30 +10,31 @@ Su propósito es explorar la aplicación de tecnologías de reconocimiento facia
 
 2. Objetivos
 
-- - Objetivo general
+### Objetivo general
 
 Desarrollar una aplicación Android que permita autenticar usuarios mediante reconocimiento facial, utilizando extracción y comparación de características biométricas.
 
-- - Objetivos específicos
+### Objetivos específicos
 
-- Implementar un sistema de registro e inicio de sesión local.
-- Permitir el registro facial mediante diferentes poses.
-- Extraer características faciales mediante un modelo de reconocimiento.
-- Comparar las características obtenidas con las referencias almacenadas.
-- Incorporar un mecanismo básico de prueba de vida.
-- Proteger la información de autenticación y los datos biométricos.
-- Evaluar el funcionamiento de la aplicación mediante pruebas.
+1. Implementar un sistema de registro e inicio de sesión local.
+2. Permitir el registro facial mediante diferentes poses.
+3. Extraer características faciales mediante un modelo de reconocimiento.
+4. Comparar las características obtenidas con las referencias almacenadas.
+5. Incorporar un mecanismo básico de prueba de vida.
+6. Proteger la información de autenticación y los datos biométricos.
+7. Evaluar el funcionamiento de la aplicación mediante pruebas.
 
 3. Funcionalidades principales
 
-- - 3.1. Autenticación local
+### 3.1. Autenticación local
 
 - Registro de cuentas independientes.
 - Inicio y cierre de sesión.
-- Protección de contraseñas mediante PBKDF2.
+- Protección de contraseñas mediante derivación iterativa de claves con HMAC-SHA256 y salt aleatorio.
 - Bloqueo temporal después de cinco intentos fallidos.
+- Aislamiento de la información correspondiente a cada cuenta.
 
-- - 3.2. Registro facial
+### 3.2. Registro facial
 
 - Solicitud de consentimiento informado.
 - Captura guiada de tres poses faciales:
@@ -43,30 +44,31 @@ Desarrollar una aplicación Android que permita autenticar usuarios mediante rec
 - Validación de la presencia de un único rostro.
 - Generación y almacenamiento de tres referencias biométricas por usuario.
 
-- - 3.3. Verificación facial
+### 3.3. Verificación facial
 
-- Captura y procesamiento de la imagen facial.
-- Extracción de características mediante MobileFaceNet.
-- Generación de embeddings faciales de 192 dimensiones.
-- Comparación mediante similitud coseno.
-- Uso de un umbral de similitud configurado en 0.80.
-- Aplicación de una regla de cuatro coincidencias de cinco comparaciones.
+1. Captura y procesamiento de la imagen facial.
+2. Extracción de características mediante MobileFaceNet.
+3. Generación de embeddings faciales de 192 dimensiones.
+4. Comparación mediante similitud coseno.
+5. Uso de un umbral de similitud configurado en 0.80.
+6. Aplicación de una regla de cuatro coincidencias de cinco comparaciones.
 
-- - 3.4. Prueba de vida
+### 3.4. Prueba de vida
 
-La aplicación incorpora un mecanismo básico de detección de vida que solicita al usuario realizar acciones aleatorias, entre ellas:
+La aplicación incorpora un mecanismo básico de detección de vida que solicita al usuario realizar acciones en orden aleatorio, entre ellas:
 
 - Girar la cabeza y regresar a la posición inicial.
 - Realizar un parpadeo.
 
 El sistema verifica la secuencia de acciones antes de continuar con el proceso de autenticación.
 
-- - 3.5. Protección de información
+### 3.5. Protección de información
 
 - Almacenamiento independiente por cuenta.
 - Protección de credenciales mediante derivación de claves.
 - Almacenamiento cifrado de las referencias biométricas.
-- Posibilidad de eliminar el registro facial.
+- Registro del consentimiento informado.
+- Posibilidad de eliminar las referencias del registro facial.
 
 4. Tecnologías utilizadas
 
@@ -78,7 +80,9 @@ El sistema verifica la secuencia de acciones antes de continuar con el proceso d
 | CameraX | Captura de imágenes mediante la cámara |
 | MediaPipe | Detección y análisis facial |
 | TensorFlow Lite | Ejecución del modelo de reconocimiento |
-| MobileFaceNe | Extracción de características faciales |
+| MobileFaceNet | Extracción de características faciales |
+| OpenCV | Procesamiento de imágenes |
+| AndroidX Security Crypto | Protección del almacenamiento local |
 | Git | Control de versiones |
 | GitHub | Alojamiento del repositorio |
 
@@ -103,14 +107,17 @@ El funcionamiento de la aplicación se organiza en las siguientes etapas:
 - Dispositivo Android o emulador compatible.
 - Cámara disponible para realizar las pruebas de reconocimiento facial.
 - Archivos de modelos necesarios para el funcionamiento del reconocimiento facial.
+- Conexión a internet durante la descarga inicial de dependencias de Gradle.
 
 7. Instalación
 
-Clonar el repositorio
+### Clonar el repositorio
 
-git clone (https://github.com/Aldazio21/POOFacescan1.git)
+```bash
+git clone https://github.com/Aldazio21/POOFacescan1.git
+```
 
-Abrir el proyecto
+### Abrir el proyecto
 
 1. Abrir Android Studio.
 2. Seleccionar la opción **Open**.
@@ -124,7 +131,7 @@ Abrir el proyecto
 La implementación utiliza los siguientes parámetros configurados:
 
 | Parámetro | Valor |
-|---|---|
+|---|---:|
 | Referencias faciales por usuario | 3 |
 | Dimensiones del embedding | 192 |
 | Umbral de similitud | 0.80 |
@@ -141,7 +148,7 @@ El proyecto cuenta con un protocolo de pruebas que contempla:
 - Separación de información entre cuentas.
 - Permisos de cámara.
 - Aceptación y rechazo del consentimiento.
-- Prueba de vida.
+- Prueba de vida y orden aleatorio de acciones.
 - Registro de las tres poses faciales.
 - Verificación del usuario registrado.
 - Rechazo de usuarios diferentes.
@@ -149,15 +156,42 @@ El proyecto cuenta con un protocolo de pruebas que contempla:
 - Comportamiento ante imágenes de baja calidad.
 - Persistencia de información después de reiniciar la aplicación.
 
-Los resultados experimentales se documentan en el protocolo de pruebas del proyecto.
+### Resultados de las pruebas automatizadas
+
+Se ejecutaron pruebas instrumentadas en un dispositivo Android 16, obteniendo los siguientes resultados:
+
+| Clase de prueba | Pruebas | Fallidas | Errores |
+|---|---:|---:|---:|
+| AuthStorageInstrumentedTest | 6 | 0 | 0 |
+| BiometricStorageInstrumentedTest | 9 | 0 | 0 |
+| ExampleInstrumentedTest | 1 | 0 | 0 |
+| **Total** | **16** | **0** | **0** |
+
+**Resultado:** las 16 pruebas instrumentadas finalizaron correctamente, sin fallos, errores ni pruebas omitidas.
+
+Para ejecutar las pruebas instrumentadas desde la terminal de Android Studio:
+
+```bash
+.\gradlew.bat connectedDebugAndroidTest
+```
+
+El informe generado por Gradle puede consultarse en:
+
+```text
+app/build/reports/androidTests/connected/debug/index.html
+```
+
+Estos resultados validan los casos cubiertos por las pruebas automatizadas, pero no representan una evaluación experimental completa de la precisión del reconocimiento facial.
 
 10. Seguridad y limitaciones
 
-La aplicación incorpora mecanismos de protección de credenciales y almacenamiento cifrado de referencias biométricas.
+La aplicación incorpora mecanismos de protección de credenciales, aislamiento de información por cuenta y almacenamiento cifrado de referencias biométricas.
 
 El mecanismo de prueba de vida implementado es básico y no garantiza protección absoluta frente a todos los métodos de suplantación.
 
 Asimismo, el umbral de similitud debe evaluarse experimentalmente para determinar el comportamiento del sistema frente a usuarios legítimos y usuarios diferentes.
+
+Las 16 pruebas instrumentadas aprobadas validan los comportamientos cubiertos por dichas pruebas, pero no certifican la seguridad integral del sistema ni su resistencia frente a todos los ataques.
 
 Los datos biométricos deben tratarse con consentimiento informado y mantenerse protegidos.
 
@@ -165,9 +199,11 @@ Los datos biométricos deben tratarse con consentimiento informado y mantenerse 
 
 El proyecto utiliza Git para el control de versiones y GitHub como plataforma de alojamiento del código fuente.
 
-Repositorio: [POOFacescan1](https://github.com/Aldazio21/POOFacescan1.git)
+**Repositorio:** [POOFacescan1](https://github.com/Aldazio21/POOFacescan1)
 
-## 12. Autor
+**Rama principal:** `main`
+
+12. Autor
 
 Desarrollador: Aldazio21
 
