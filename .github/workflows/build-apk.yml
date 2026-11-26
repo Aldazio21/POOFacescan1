@@ -29,9 +29,16 @@ jobs:
           java-version: '17'
 
       - name: Install Android SDK packages
+        shell: bash
         run: |
           echo "$ANDROID_HOME/platform-tools" >> "$GITHUB_PATH"
-          sdkmanager --install "platforms;android-37" "build-tools;37.0.0"
+          SDKMANAGER="$(find "$ANDROID_HOME/cmdline-tools" -type f -name sdkmanager 2>/dev/null | sort -V | tail -n 1)"
+          if [ -z "$SDKMANAGER" ]; then
+            echo "ERROR: sdkmanager was not found under $ANDROID_HOME/cmdline-tools"
+            exit 1
+          fi
+          echo "Using SDK manager: $SDKMANAGER"
+          "$SDKMANAGER" --install "platforms;android-37" "build-tools;37.0.0"
 
       - name: Build debug APK
         run: |
